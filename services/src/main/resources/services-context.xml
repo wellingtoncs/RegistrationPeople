@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<beans profile="dev">
+		<bean id="peopleServices"
+			class="com.wcs.rp.services.PeopleServices" autowire="byName">
+			<property name="peopleDao" ref="peopleDao" />
+		</bean>
+	</beans>
+
+	<beans profile="test">
+		<bean id="peopleServices"
+			class="com.wcs.rp.services.PeopleServices" autowire="byName">
+			<property name="peopleDao" ref="peopleDao" />
+		</bean>
+
+		<bean id="peopleDao" class="org.mockito.Mockito"
+			factory-method="mock">
+			<constructor-arg
+				value="com.wcs.rp.persistence.PeopleDao" />
+		</bean>
+	</beans>
+
+</beans>

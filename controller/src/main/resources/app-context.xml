@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context.xsd							
+							http://www.springframework.org/schema/mvc
+							http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<mvc:annotation-driven />
+	<mvc:view-controller path="/" />
+
+	<context:annotation-config />
+	<context:component-scan
+		base-package="com.wcs.rp.controller" />
+
+	<mvc:resources location="/view/" mapping="/view/**" />
+
+	<beans profile="dev">
+		<bean id="frontController"
+			class="com.wcs.rp.controller.FrontController">
+			<property name="peopleServices" ref="peopleServices" />
+		</bean>
+	</beans>
+
+	<beans profile="test">
+		<bean id="peopleServices" class="org.mockito.Mockito"
+			autowire="byName" factory-method="mock">
+			<constructor-arg
+				value="com.wcs.rp.services.PeopleServices" />
+		</bean>
+	</beans>
+
+</beans>
