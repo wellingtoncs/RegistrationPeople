@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.wcs.rp.entities.People;
+import com.wcs.rp.persistence.IPeopleDao;
 import com.wcs.rp.persistence.PeopleDao;
 
 @Service("peopleServices")
@@ -16,10 +17,10 @@ import com.wcs.rp.persistence.PeopleDao;
 public class PeopleServices implements IPeopleServices {
 
 	private final Logger logger = LoggerFactory.getLogger(PeopleServices.class);
-	private PeopleDao peopleDao;
+	private IPeopleDao peopleDao;
 
 	@Autowired
-	public void setPeopleDao(PeopleDao peopleDao) {
+	public void setPeopleDao(IPeopleDao peopleDao) {
 		
 		this.peopleDao = peopleDao;
 	}

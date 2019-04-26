@@ -18,7 +18,7 @@ import com.wcs.rp.entities.People;;
 @Repository
 @Transactional
 @Profile("dev")
-public class PeopleDao {//implements IPeopleDao {
+public class PeopleDao implements IPeopleDao {
 	
 	private Logger logger = LoggerFactory.getLogger(PeopleDao.class);
 	private EntityManager entityManager;
@@ -29,7 +29,7 @@ public class PeopleDao {//implements IPeopleDao {
 	}
 
 	@Transactional(readOnly = true)
-	//@Override
+	@Override
 	public List<People> getPeople() {
 
 		logger.debug("Selecting all people stored...");
@@ -61,7 +61,7 @@ public class PeopleDao {//implements IPeopleDao {
 	}
 
 	@Transactional(readOnly = true)
-	//@Override
+	@Override
 	public People getPeopleById(Long id) {
 
 		logger.debug("Selecting people with id " + id + " ...");
@@ -71,7 +71,7 @@ public class PeopleDao {//implements IPeopleDao {
 		return person;
 	}
 
-	//@Override
+	@Override
 	public People savePeople(People people) {
 
 		logger.debug("Saving people..." + people);
@@ -94,7 +94,7 @@ public class PeopleDao {//implements IPeopleDao {
 		return people;
 	}
 
-	//@Override
+	@Override
 	public boolean deletePeople(Long id) {
 		
 		if (id == null) {
