@@ -101,7 +101,5 @@ app.controller('PeopleController', function($scope, $http){
 				$scope.style = "alert-danger";
 				return;
 			});
-		
-		$scope.reset();
 	}
 });
