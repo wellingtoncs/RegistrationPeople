@@ -33,29 +33,15 @@ public class PeopleDao implements IPeopleDao {
 	public List<People> getPeople() {
 
 		logger.debug("Selecting all people stored...");
-		
-		People peopleOne = new People();
-		peopleOne.setId(111L);
-		peopleOne.setName("Nova Pessoa Cadastrada");
-		peopleOne.setStreet("Rua Cais do Apolo");
-		peopleOne.setNumber("999");
-		peopleOne.setNeighborhood("Bairro Novo");
-		peopleOne.setCity("Cidade Nova");
-		peopleOne.setState("Estados");
-		peopleOne.setCellPhone("+5581999999999");
-		peopleOne.setPhone("+558122222222");
-		
-		
+				
+		Query query = entityManager.createNamedQuery("People.findAll", People.class);
 
-		//Query query = entityManager.createNamedQuery("People.findAll", People.class);
-
-		//logger.debug("Querying database after all people => " + query.toString());
+		logger.debug("Querying database after all people => " + query.toString());
 
 		@SuppressWarnings("unchecked")
-		List<People> peopleList = new ArrayList<>();//query.getResultList();
-		peopleList.add(peopleOne);
+		List<People> peopleList = query.getResultList();
 
-		//logger.debug("List of people found! Retrieving " + peopleList.size() + " people.");
+		logger.debug("List of people found! Retrieving " + peopleList.size() + " people.");
 
 		return peopleList;
 	}

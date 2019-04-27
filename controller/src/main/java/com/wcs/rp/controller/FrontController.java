@@ -61,10 +61,10 @@ public class FrontController {
 	}
 
 	@RequestMapping(value = "/pessoa/remove/{id}", method = RequestMethod.GET)
-	public ResponseEntity<People> deletePeople(@PathVariable long peopleId) {
-		logger.debug("Looking for people " + peopleId + "...");
+	public ResponseEntity<People> deletePeople(@PathVariable long id) {
+		logger.debug("Looking for people " + id + "...");
 
-		boolean status = peopleServices.deletePeople(peopleId);
+		boolean status = peopleServices.deletePeople(id);
 		return new ResponseEntity<People>(new People(), HttpStatus.OK);
 	}
 }

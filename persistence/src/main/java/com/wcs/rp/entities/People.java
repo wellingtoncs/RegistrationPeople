@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Transient;
 
 @Entity
-//@NamedQuery(name = "People.findAll", query = "SELECT DISTINCT NEW com.wcs.rp.entities.People(p.id, p.name) FROM People p ORDER BY p.name")
+@NamedQuery(name = "People.findAll", query = "SELECT DISTINCT NEW com.wcs.rp.entities.People(p.id, p.name) FROM People p ORDER BY p.name")
 public class People implements Serializable {
 	@Transient
 	private static final long serialVersionUID = -2019042514521005001L;
@@ -51,6 +51,12 @@ public class People implements Serializable {
 	public People(Long id) {
 		this();
 		this.id = id;
+	}
+	
+	public People(Long id, String name) {
+		this();
+		this.id = id;
+		this.name = name;
 	}
 	
 	//Gets and Sets

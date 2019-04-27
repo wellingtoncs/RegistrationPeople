@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.wcs.rp.entities.People;
 import com.wcs.rp.persistence.IPeopleDao;
-import com.wcs.rp.persistence.PeopleDao;
 
 @Service("peopleServices")
 @Profile("dev")

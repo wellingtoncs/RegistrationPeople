@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Wellington CS</title>
+		<link href="css/style.css" rel="stylesheet" type='text/css'>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+		<link href='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' rel='stylesheet' type='text/css' media='all' /> 		
+	</head>
+	<body>
+		<div id="dashboard" class="container" ng-app="RegistrationPeople" ng-controller="PeopleController as people">
+			<div class="panel panel-default">
+				<div id="title" class="panel-heading col-md-12 col-xs-12"><h1>Gestão de Pessoas</h1></div>
+				<div class="panel-body">					
+					<div class="table-responsive col-md-4 col-xs-12 col-sm-12">
+						<div id="list" class="panel panel-default">
+							<div class="panel-heading"><h4>Lista de Pessoas</h4></div>
+							<table class="table table-hover">
+								<tr class="success">
+									<th>Id</th>
+									<th>Nome</th>
+								</tr>
+								<tr ng-repeat="item in peopleList" ng-click="peopleDetails(item.id)" style="cursor: pointer;" ng-cloak>
+									<td>{{item.id}}</td>
+									<td>{{item.name}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!-- <div class="col-md-1 col-sm-1"></div> -->
+					<div id="details" class="col-md-8 col-xs-12 col-sm-12">
+						<form class="panel panel-default">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-md-3 titleActionText" ><h4>Detalhes</h4></div>
+									<div class="col-md-9 titleAction">
+										<button type="button" class="btn btn-info" ng-click="newPeople()">Novo</button>
+										<button type="button" id="savePeople" class="btn btn-success" ng-click="savePeople(people)">Salvar</button>
+										<button type="button" id="removePeople" class="btn btn-remove" ng-click="removePeople(people.id)">Remover</button>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="form-group col-md-3">
+									<label for="peopleid">Id</label>
+									<input id="peopleid" type="number" class="form-control" ng-model="people.id" min="0" readonly >
+								</div>
+								<div class="form-group col-md-9">
+									<label for="name">Nome</label>
+									<input id="name" type="text" class="form-control" ng-model="people.name" placeholder="Nome Completo" >
+								</div>
+								<div class="form-group col-md-6">
+									<label for="cellPhone">Telefone Celular</label>
+									<input id="cellPhone" type="tel" class="form-control" ng-model="people.cellPhone" placeholder="(81)99999-9999" ui-mask="(99)9999-9999">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="phone">Telefone Fixo</label>
+									<input id="phone" type="tel" class="form-control" ng-model="people.phone" placeholder="(81)2323-6969" ui-mask="(99)999-9999">
+								</div>
+								<div class="form-group col-md-10">
+									<label for="street">Endereço</label>
+									<input id="street" type="text" class="form-control" ng-model="people.street" placeholder="Digite seu endereço">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="number">Número</label>
+									<input id="number" type="text" class="form-control" ng-model="people.number" placeholder="0000" ui-mask="9999999999">
+								</div>
+								<div class="form-group col-md-5">
+									<label for="neighborhood">Bairro</label>
+									<input id="neighborhood" type="text" class="form-control" ng-model="people.neighborhood" placeholder="Digite o bairro">
+								</div>
+								<div class="form-group col-md-5">
+									<label for="city">Cidade</label>
+									<input id="city" type="text" class="form-control" ng-model="people.city" placeholder="Digite a cidade">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="state">UF</label>
+									<input id="state" type="text" class="form-control" ng-model="people.state" placeholder="XY">
+								</div>									
+							</div>								
+						</form>
+					</div>
+				</div>
+				<div class="panel-footer alert" ng-class="style" ng-model="style" role="alert" ng-cloak>
+					<span>:: Status ::</span> {{statusMsg}}
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
+	<script type="text/javascript" src="javascript/people-script.js"></script>
+</html>
